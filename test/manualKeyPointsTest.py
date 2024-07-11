@@ -5,8 +5,8 @@ from  autoKeyPoints import moveDetectionByKeyPoints
 from manualKeyPoints import manualKeyPoints
 
 # 读取两张照片
-image1 = cv2.imread('images/kuiguangta/image1.jpg')
-image2 = cv2.imread('images/kuiguangta/image3.jpg')
+image1 = cv2.imread('../images/kuiguangta/image1.jpg')
+image2 = cv2.imread('../images/kuiguangta/image3.jpg')
 # 在照片1中手动指定关键点坐标
 specified_keypoints_coords = [(713,1153),(717,1221),(1009,1085),(1057,985),(1161,981),(1325,1085),(1529,1113),(1605,1213),
                               (1129,117),(789,277)]
@@ -41,3 +41,4 @@ plt.subplot(122),plt.imshow(image2_aligned_cropped),plt.title("image2_aligned_cr
 plt.show()
 
 moveDetectionByKeyPoints(image1_cropped,image2_aligned_cropped)
+
