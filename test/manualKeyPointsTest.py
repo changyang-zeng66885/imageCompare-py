@@ -5,17 +5,23 @@ from  autoKeyPoints import moveDetectionByKeyPoints
 from manualKeyPoints import manualKeyPoints
 
 # 读取两张照片
-image1 = cv2.imread('../images/kuiguangta/image1.jpg')
-image2 = cv2.imread('../images/kuiguangta/image3.jpg')
+# image1 = cv2.imread('../images/kuiguangta/image1.jpg')
+# image2 = cv2.imread('../images/kuiguangta/image3.jpg')
+image1 = cv2.imread("../images/shanzi/image1.jpg")
+image2 = cv2.imread("../images/shanzi/image2.jpg")
+
+
 # 在照片1中手动指定关键点坐标
-specified_keypoints_coords = [(713,1153),(717,1221),(1009,1085),(1057,985),(1161,981),(1325,1085),(1529,1113),(1605,1213),
-                              (1129,117),(789,277)]
+# specified_keypoints_coords = [(713,1153),(717,1221),(1009,1085),(1057,985),(1161,981),(1325,1085),(1529,1113),(1605,1213),
+#                               (1129,117),(789,277)]
+unchangedPoints = [(597,1577),(709,1569),(605,1505),(649,1503),(581,1455),(723,1443)]
+trackPoint = [(635,1255),(623,913),(619,711),(593,449),(603,229),(603,523)]
 
 
-srcPts,dstPts = manualKeyPoints(image1,image2,specified_keypoints_coords)
+srcPts,dstPts = manualKeyPoints(image1,image2,unchangedPoints)
 
-# print("srcpts",srcpts)
-# print("dstpts",dstpts)
+# print("srcpts",srcPts)
+# print("dstpts",dstPts)
 
 # 计算变换矩阵
 M, mask = cv2.findHomography(dstPts, srcPts, cv2.RANSAC, 5.0)
@@ -40,5 +46,7 @@ plt.subplot(121),plt.imshow(image1),plt.title("image1")
 plt.subplot(122),plt.imshow(image2_aligned_cropped),plt.title("image2_aligned_cropped")
 plt.show()
 
-moveDetectionByKeyPoints(image1_cropped,image2_aligned_cropped)
+manualKeyPoints(image1_cropped,image2_aligned_cropped,trackPoint)
+
+# moveDetectionByKeyPoints(image1_cropped,image2_aligned_cropped)
 

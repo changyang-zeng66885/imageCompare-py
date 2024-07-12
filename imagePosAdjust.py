@@ -3,16 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# 获取照片1中指定关键点在照片2中的对应位置
-def find_corresponding_points(kp1, kp2, matches):
-    points = []
-    for match in matches:
-        points.append((kp1[match.queryIdx].pt, kp2[match.trainIdx].pt))
-    return points
-
-
-# 给定两张图片，以及指定的关键点，返回两张图片关键点的对应关系。
-def manualKeyPoints(img1,img2,specified_keypoints_coords):
+# 给定两张图片，以及在图片1中指定的关键点，返回两张图片关键点的对应关系。
+def manualKeyPoints(img1,img2,specified_keypoints_coords,distance_threshold = 100,kpmax = 1000):
     # 将图片转换为灰度图
     gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
     gray2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
@@ -27,32 +19,31 @@ def manualKeyPoints(img1,img2,specified_keypoints_coords):
     kp1 = []
     des1 = []
     # 设置距离阈值
-    distance_threshold = 100
-    # 遍历每一个关键点
-    for i, kp in enumerate(kpn1):
-        x, y = kp.pt
-        distances = np.sqrt(np.sum((specified_keypoints_coords - np.array([x, y])) ** 2, axis=1))
-        # 检查是否有任意一个距离小于阈值
-        if np.any(distances < distance_threshold):
-            kp1.append(kp)
-            des1.append(desn1[i])
+    for specPoint in specified_keypoints_coords:
+        kpcnt = 0
+        xs,ys = specPoint
+        for i, kp in enumerate(kpn1):
+            x, y = kp.pt
+            if (xs-x)**2 + (ys-y)**2 < distance_threshold**2 and kpcnt <= kpmax :
+                kp1.append(kp)
+                des1.append(desn1[i])
+                kpcnt += 1
+
+
+    # # 遍历每一个关键点
+    # for i, kp in enumerate(kpn1):
+    #     x, y = kp.pt
+    #     distances = np.sqrt(np.sum((specified_keypoints_coords - np.array([x, y])) ** 2, axis=1))
+    #     # 检查是否有任意一个距离小于阈值
+    #     if np.any(distances < distance_threshold):
+    #         kp1.append(kp)
+    #         des1.append(desn1[i])
     # 将描述符转换为numpy数组
     des1 = np.array(des1)
-
     print(f"KeyPoints 1 number:{len(kp1)}")
-
-    plt.figure(figsize=(2*4,2*4))
-
-    img1_with_keypoints = cv2.drawKeypoints(img1, kp1, None, color=(0, 255, 0), flags=cv2.DrawMatchesFlags_DRAW_RICH_KEYPOINTS)
-    for coord in specified_keypoints_coords:
-        cv2.circle(img1_with_keypoints, coord, 30, (0, 0, 255), -1)  # 红色 (BGR), 半径为10, 实心圆
-    plt.subplot(2,2,1),plt.imshow(cv2.cvtColor(img1_with_keypoints, cv2.COLOR_BGR2RGB)),plt.title("img1 with initial target(Red) and keypoints(green)")
 
     # 检测图片2的关键点和计算描述子
     kp2, des2 = sift.detectAndCompute(gray2, None)
-
-    img2_with_keypoints = cv2.drawKeypoints(img2, kp2, None, color=(0, 255, 0), flags=cv2.DrawMatchesFlags_DRAW_RICH_KEYPOINTS)
-    plt.subplot(2,2,3),plt.imshow(cv2.cvtColor(img2_with_keypoints, cv2.COLOR_BGR2RGB)),plt.title("img2 with keypoints(green)")
 
     # 将描述子转换为浮点型
     # 由于cv2.FlannBasedMatcher不支持ORB描述子(descriptors)的默认格式。FLANN匹配器通常用于SIFT和SURF描述子，它们是浮点型的，而ORB描述子是8位的整数型。要解决这个问题，可以将ORB描述子转换为浮点型。
@@ -75,7 +66,9 @@ def manualKeyPoints(img1,img2,specified_keypoints_coords):
     print(f"Good match number:{len(good_matches)}")
 
     # 找到照片2中对应的关键点位置
-    corresponding_points = find_corresponding_points(kp1, kp2, good_matches)
+    corresponding_points = []
+    for match in good_matches:
+        corresponding_points.append((kp1[match.queryIdx].pt, kp2[match.trainIdx].pt))
 
     srcPts = []
     dstPts = []
@@ -90,14 +83,32 @@ def manualKeyPoints(img1,img2,specified_keypoints_coords):
         cv2.circle(img2_with_keypoints, start_point , 20, (0, 0, 255), -1)
         cv2.circle(img2_with_keypoints, end_point, 20, (0, 255, 0), -1)
         cv2.arrowedLine(img2_with_keypoints, start_point, end_point, (255, 0, 0), 5, tipLength=0.05)
-
-    plt.subplot(2,2,4),plt.imshow(cv2.cvtColor(img2_with_keypoints, cv2.COLOR_BGR2RGB)),plt.title("KeyPoint match result:")
-    plt.show()
-
     srcPts = np.array(srcPts, dtype=np.float32).reshape(-1, 2)
     dstPts = np.array(dstPts, dtype=np.float32).reshape(-1, 2)
 
-    return srcPts,dstPts
+    return srcPts,dstPts,kp1,kp2
+
+def showPointMatchWithArrowLine(srcPts,dstPts,img2):
+    if not len(srcPts) == len(dstPts):
+        print(f"len(srcPts)({len(srcPts)}) != len(dstPts)({len(dstPts)})!")
+        return cv2.cvtColor(img2, cv2.COLOR_BGR2RGB)
+
+    img2_with_keypoints = img2.copy()
+    for i in range(len(srcPts)):
+        start_point = (int(srcPts[i][0]),int(srcPts[i][1]))
+        end_point = (int(dstPts[i][0]),int(dstPts[i][1]))
+        cv2.circle(img2_with_keypoints, start_point, 20, (0, 0, 255), -1)
+        cv2.circle(img2_with_keypoints, end_point, 20, (0, 255, 0), -1)
+        cv2.arrowedLine(img2_with_keypoints, start_point, end_point, (255, 0, 0), 5, tipLength=0.05)
+    return cv2.cvtColor(img2_with_keypoints, cv2.COLOR_BGR2RGB)
+
+
+# 绘制关键点（指定关键点或者自动识别的关键点）
+def showkpInImage(kp1,img1,specified_keypoints_coords = [],color = (0,0,255)):
+    img1_with_keypoints = cv2.drawKeypoints(img1, kp1, None, color=(0, 255, 0),flags=cv2.DrawMatchesFlags_DRAW_RICH_KEYPOINTS)
+    for coord in specified_keypoints_coords:
+        cv2.circle(img1_with_keypoints, coord, 30, color, -1)  # 红色 (BGR), 半径为10, 实心圆
+    return img1_with_keypoints
 
 
 # 根据关键点的对应关系（srcPts，dstPts），将两张图片调整到一样的位置
@@ -121,10 +132,41 @@ def adjustImagesToSamePosWithSrcDst(image1,image2,srcPts,dstPts):
     image2_aligned_cropped = image2_aligned[y:y + h, x:x + w]
 
     # 显示结果
-    plt.figure(figsize=(2*3,1*3))
-    plt.title("Image Adjust Result")
-    plt.subplot(121), plt.imshow(image1), plt.title("image1")
-    plt.subplot(122), plt.imshow(image2_aligned_cropped), plt.title("image2_aligned_cropped")
-    plt.show()
+    # plt.figure(figsize=(2*4,1*4))
+    # plt.title("Image Adjust Result")
+    # plt.subplot(121), plt.imshow(image1), plt.title("image1")
+    # plt.subplot(122), plt.imshow(image2_aligned_cropped), plt.title("image2_aligned_cropped")
+    # plt.show()
     return image1_cropped,image2_aligned_cropped
+
+
+# 使用最小二乘法拟合直线
+def fit_line(points):
+    x = points[:, 0]
+    y = points[:, 1]
+    A = np.vstack([x, np.ones(len(x))]).T
+    m, c = np.linalg.lstsq(A, y, rcond=None)[0]
+
+    # # 绘制点和拟合直线
+    # plt.scatter(x, y, color='red', label='Data Points')
+    # plt.plot(x, m * x + c, color='blue', label='Fitted Line')
+    # # 设置图例和标签
+    # plt.xlabel('X')
+    # plt.ylabel('Y')
+    # plt.title('Linear Fit using Least Squares')
+    # plt.legend()
+    # plt.grid(True)
+    # # 展示图形
+    # plt.show()
+
+    return m, c
+
+# 绘制拟合直线
+def draw_line(image, m, c, color):
+    print(f"shape0:{image.shape[0]}, shape1: {image.shape[1]}")
+    y1 = int(m * 0 + c)
+    y2 = int(m * image.shape[1] + c)
+    cv2.line(image, (0, y1), (image.shape[1], y2), color, 10)
+
+
 
