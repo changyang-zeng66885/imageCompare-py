@@ -9,6 +9,7 @@ image2 = cv2.imread("../images/shanzi/image3.jpg")
 unchangedPoints = [(587,1491),(629,1487),(671,1485),(697,1413),(573,1393),(449,1545),(799,1531),(183,1535),(1017,1545),(1081,1441),(87,1457)]
 trackPoint = [(685,97),(685,301),(663,549),(651,777),(614,1127)]
 
+
 ROWS = 2
 COLS = 3
 plt.figure(figsize=(3*COLS,4*ROWS)) # 3行2列
@@ -31,8 +32,8 @@ plt.subplot(235),plt.imshow(image2_aligned_cropped),plt.title("image2_aligned_cr
 # 对于位置校正后的图片，根据想要跟踪的关键点，识别差异
 srcPts_t,dstPts_t,kp1_t,kp2_t = ia.manualKeyPoints(image1_cropped,image2_aligned_cropped,trackPoint,50,10)
 
-# print(f"srcPts_t: {srcPts_t}")
-# print(f"dstPts_t: {dstPts_t}")
+print(f"srcPts_t: {srcPts_t}")
+print(f"dstPts_t: {dstPts_t}")
 
 moveTrack1 = ia.showPointMatchWithArrowLine(srcPts,dstPts,image2)
 moveTrack2 = ia.showPointMatchWithArrowLine(srcPts_t,dstPts_t,image2_aligned_cropped)
