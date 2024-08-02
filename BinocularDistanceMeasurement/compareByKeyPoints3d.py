@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
-import calibCamera2
+import CalibCamera
 import glob
 
 """
@@ -39,8 +39,13 @@ def detect_distance(left_img, right_img, K1, D1, K2, D2, R, T):
         speckleRange=32
     )
     disparity_map = stereo.compute(rectified_left, rectified_right) # 视差图
-    # 将视差图转换为深度图
+    # # 将视差图转换为深度图
     depth_map = cv2.convertScaleAbs(disparity_map, alpha=255 / disparity_map.max())
+
+    # 将视差图转换为深度图
+    # focal_length = mtxL[0][0]
+    # base_line = np.linalg.norm(T1)
+    # depth_map = focal_length * base_line / disparity_map
 
     # 计算图像上某一点的3D坐标 (假设点坐标为(x, y))
     point_cloud = cv2.reprojectImageTo3D(disparity_map, Q)
@@ -66,26 +71,26 @@ def detect_distance(left_img, right_img, K1, D1, K2, D2, R, T):
     plt.colorbar()
     plt.show()
 
+if __name__ == "__main__":
+    # 读取左相机和右相机的图像
+    imgpoints_left = []
+    imgpoints_right = []
+    images_left = glob.glob("images/demoImage6/test/left/*.jpg")
+    images_right = glob.glob('images/demoImage6/test/right/*.jpg')
 
-# 读取左相机和右相机的图像
-imgpoints_left = []
-imgpoints_right = []
-images_left = glob.glob("demoImage5/calib/left/*.jpg")
-images_right = glob.glob('demoImage5/calib/right/*.jpg')
+    # 校正过的相机内参和外参矩阵（假设已经获得这些参数）
+    mtxL, distL, mtxR, distR, R1, T1 = CalibCamera.calibCamera('images/demoImage6/calib/left/*.jpg',
+                                                                'images/demoImage6/calib/right/*.jpg', showMatch=False)
+    K1 = np.array(mtxL)  # 左相机内参
+    K2 = np.array(mtxR)  # 右相机内参
+    D1 = np.array(distL)  # 左相机畸变系数:[k1, k2, p1, p2, k3]
+    D2 = np.array(distR)  # 又相机畸变系数:[k1, k2, p1, p2, k3]
+    R = np.array(R1)  # 两个相机的旋转矩阵
+    T = np.array(T1)  # 两个相机之间的平移向量
+    #
 
-# 校正过的相机内参和外参矩阵（假设已经获得这些参数）
-mtxL, distL, mtxR, distR, R1, T1 = calibCamera2.calibCamera('demoImage4/calib/left/*.jpg',
-                                                            'demoImage4/calib/right/*.jpg', showMatch=False)
-K1 = np.array(mtxL)  # 左相机内参
-K2 = np.array(mtxR)  # 右相机内参
-D1 = np.array(distL)  # 左相机畸变系数:[k1, k2, p1, p2, k3]
-D2 = np.array(distR)  # 又相机畸变系数:[k1, k2, p1, p2, k3]
-R = np.array(R1)  # 两个相机的旋转矩阵
-T = np.array(T1)  # 两个相机之间的平移向量
-#
-
-for img_left, img_right in zip(images_left, images_right):
-    print(f"img_left:{img_left}, img_right:{img_right}")
-    left_img = cv2.imread(img_left, cv2.IMREAD_GRAYSCALE)
-    right_img = cv2.imread(img_right, cv2.IMREAD_GRAYSCALE)
-    detect_distance(left_img, right_img, K1, D1, K2, D2, R, T)
+    for img_left, img_right in zip(images_left, images_right):
+        print(f"img_left:{img_left}, img_right:{img_right}")
+        left_img = cv2.imread(img_left, cv2.IMREAD_GRAYSCALE)
+        right_img = cv2.imread(img_right, cv2.IMREAD_GRAYSCALE)
+        detect_distance(left_img, right_img, K1, D1, K2, D2, R, T)

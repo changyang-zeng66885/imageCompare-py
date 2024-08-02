@@ -77,11 +77,8 @@ y distance, true=280.0, test = 306.0034458900361
 
 ## 该算法与关键点检测算法的配合效果测试
 
-![Alt text](demoImage-bottle.png)
-
 + 等效焦距 26mm
 + 摄像头到瓶子的距离：约 280mm
 
-
 看上去结果还行？
-![Alt text](image1.jpg)
+![Alt text](demoImage-bottle.png)
