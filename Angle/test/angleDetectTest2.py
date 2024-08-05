@@ -1,11 +1,10 @@
-import imagePosAdjust as ia
+from Angle import imagePosAdjust as ia
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-import edge
 
-image1 = cv2.imread("../images/kuiguangta2/image1.png")
-image2 = cv2.imread("../images/kuiguangta2/image3.png")
+image1 = cv2.imread("../../images/kuiguangta2/image1.png")
+image2 = cv2.imread("../../images/kuiguangta2/image3.png")
 
 unchangedPoints = [(136,437),(162,445),(208,438),(141,454),(225,455),(227,480),(128,487),(228,486),(94,495)]
 trackPoint = [(178,38),(180,434)]

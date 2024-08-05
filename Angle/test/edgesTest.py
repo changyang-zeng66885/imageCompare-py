@@ -2,10 +2,10 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-import edge
+from Angle import edge
 
-image1 = cv2.imread("../images/kuiguangta2/image1.png")
-image2 = cv2.imread("../images/kuiguangta2/image3.png")
+image1 = cv2.imread("../../images/kuiguangta2/image1.png")
+image2 = cv2.imread("../../images/kuiguangta2/image3.png")
 
 img1WithEdge = edge.getEdges(image1)
 img2WithEdge = edge.getEdges(image2)

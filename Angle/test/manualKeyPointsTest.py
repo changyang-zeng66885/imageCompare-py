@@ -1,13 +1,12 @@
 import cv2
-import numpy as np
 import matplotlib.pyplot as plt
-from manualKeyPoint import manualKeyPoints
+from Angle.manualKeyPoint import manualKeyPoints
 
 # 读取两张照片
 # image1 = cv2.imread('../images/kuiguangta/image1.jpg')
 # image2 = cv2.imread('../images/kuiguangta/image3.jpg')
-image1 = cv2.imread("../images/shanzi/image1.jpg")
-image2 = cv2.imread("../images/shanzi/image3.jpg")
+image1 = cv2.imread("../../images/shanzi/image1.jpg")
+image2 = cv2.imread("../../images/shanzi/image3.jpg")
 
 
 # 在照片1中手动指定关键点坐标

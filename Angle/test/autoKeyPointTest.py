@@ -1,8 +1,5 @@
 import cv2
-import numpy as np
-import matplotlib.pyplot as plt
-from autoKeyPoints import moveDetectionByKeyPoints
-from manualKeyPoint import manualKeyPoints
+from Angle.autoKeyPoints import moveDetectionByKeyPoints
 
 imagePath1 = "../images/kuiguangta/image1.jpg"
 imagePath2 = "../images/kuiguangta/image3.jpg"

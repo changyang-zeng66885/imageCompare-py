@@ -2,7 +2,7 @@ from torchvision.io.image import read_image
 from torchvision.models.segmentation import fcn_resnet50, FCN_ResNet50_Weights
 from torchvision.transforms.functional import to_pil_image
 
-img = read_image("/images/kuiguangta2/image1.png")
+img = read_image("../images/kuiguangta2/image1.png")
 # 设置模型类型
 weights = FCN_ResNet50_Weights.DEFAULT
 model = fcn_resnet50(weights=weights)
