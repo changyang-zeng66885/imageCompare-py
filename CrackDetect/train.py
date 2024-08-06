@@ -18,7 +18,7 @@ import wandb # 训练过程可视化
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print("device:",device)
 
-num_epochs = 5
+num_epochs = 10
 batch_size = 4
 learning_rate = 0.01
 debug = False # 在 debug 模式下，只会加载前10条数据（方便调试）
@@ -45,7 +45,7 @@ scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=2, thr
 
 wandb.init(
     # set the wandb project where this run will be logged
-    project="CrackDetectByUnet-demo",
+    project="CrackDetectByUnet-demo-Bailushuyuan",
     # track hyperparameters and run metadata
     config={
     "learning_rate": learning_rate,
@@ -97,8 +97,10 @@ for epoch in range(num_epochs):
     print(f'Epoch [{epoch+1}/{num_epochs}], Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}')
     wandb.log({"Train Loss": train_loss, "Val Loss": val_loss})
 
+saveModelPath = f'CrackDetect/model_saved/best_model_epoch_{num_epochs}.pth'
+torch.save(model.state_dict(),saveModelPath )
+print('Saved best model at: '+ saveModelPath )
+
 wandb.finish()
-torch.save(model.state_dict(), f'imageCompare-py/CrackDetect/model_saved/best_model_epoch{num_epochs}.pth')
-print('Saved best model at: '+ f'imageCompare-py/CrackDetect/model_saved/best_model_epoch{num_epochs}.pth' )
 
 

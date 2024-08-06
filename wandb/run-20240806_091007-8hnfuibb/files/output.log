@@ -1,0 +1,45 @@
+Begin Train
+Epoch 0/6
+
+
+Epoch 1/6:  98%|███████████████████████████████████████████████████████████████████████████████████▍ | 157/160 [00:06<00:00, 27.36it/s]
+Epoch [1/6], Train Loss: 0.0372, Val Loss: 0.0170
+
+
+
+Epoch 2/6:  92%|██████████████████████████████████████████████████████████████████████████████       | 147/160 [00:05<00:00, 27.76it/s]
+Epoch [2/6], Train Loss: 0.0145, Val Loss: 0.0174
+
+
+
+Epoch 3/6:  86%|█████████████████████████████████████████████████████████████████████████▎           | 138/160 [00:04<00:00, 27.60it/s]
+Epoch [3/6], Train Loss: 0.0140, Val Loss: 0.0154
+
+
+
+Epoch 4/6:  81%|████████████████████████████████████████████████████████████████████▌                | 129/160 [00:04<00:01, 27.66it/s]
+Epoch [4/6], Train Loss: 0.0136, Val Loss: 0.0172
+
+
+
+
+Epoch 6/6:   0%|                                                                                               | 0/160 [00:00<?, ?it/s]
+Epoch [5/6], Train Loss: 0.0131, Val Loss: 0.0150
+
+
+
+Epoch 6/6:  69%|██████████████████████████████████████████████████████████▉                          | 111/160 [00:04<00:01, 27.63it/s]
+Epoch [6/6], Train Loss: 0.0127, Val Loss: 0.0146
+Traceback (most recent call last):
+  File "/root/imageCompare-py/CrackDetect/train.py", line 101, in <module>
+    torch.save(model.state_dict(),saveModelPath )
+  File "/root/miniconda3/lib/python3.12/site-packages/torch/serialization.py", line 627, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/site-packages/torch/serialization.py", line 501, in _open_zipfile_writer
+    return container(name_or_buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/site-packages/torch/serialization.py", line 472, in __init__
+    super().__init__(torch._C.PyTorchFileWriter(self.name))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Parent directory imageCompare-py/CrackDetect/model_saved does not exist.
