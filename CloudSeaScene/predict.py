@@ -19,9 +19,14 @@ def predict(image_path, model_path):
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
     ])
 
+    
+
     # 读取并处理图像
     image = Image.open(image_path).convert("RGB")
     image = transform(image).unsqueeze(0)  # 添加 batch 维度
+
+    # print(f"image size:{image.shape}")
+    # image size:torch.Size([1, 3, 128, 128])
 
     # 进行预测
     with torch.no_grad():

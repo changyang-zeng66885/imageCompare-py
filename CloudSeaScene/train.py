@@ -73,11 +73,7 @@ for epoch in range(num_epochs):
             val_loss += loss.item()
 
             # 计算准确度
-            _, predicted = torch.max(outputs.data, 1)
-            #print(f"outputs:{outputs.argmax(dim=1)}")
-            #print(f"predicted:{predicted}")
-            #print(f"true labels:{labels}")
-            
+            _, predicted = torch.max(outputs.data, 1)            
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
 
