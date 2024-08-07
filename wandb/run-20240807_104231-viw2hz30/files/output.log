@@ -1,0 +1,11 @@
+Epoch [1/10], Train Loss: 1.2910, Val Loss: 7.6962, Val Accuracy: 0.00%
+Epoch [2/10], Train Loss: 0.0680, Val Loss: 15.1186, Val Accuracy: 0.00%
+Epoch [3/10], Train Loss: 0.0030, Val Loss: 22.1975, Val Accuracy: 0.00%
+Epoch [4/10], Train Loss: 0.0001, Val Loss: 28.9210, Val Accuracy: 0.00%
+Epoch [5/10], Train Loss: 0.0000, Val Loss: 35.2945, Val Accuracy: 0.00%
+Epoch [6/10], Train Loss: 0.0000, Val Loss: 41.3246, Val Accuracy: 0.00%
+Epoch [7/10], Train Loss: 0.0000, Val Loss: 47.0203, Val Accuracy: 0.00%
+Epoch [8/10], Train Loss: 0.0000, Val Loss: 52.3890, Val Accuracy: 0.00%
+Epoch [9/10], Train Loss: 0.0000, Val Loss: 57.4406, Val Accuracy: 0.00%
+Epoch [10/10], Train Loss: 0.0000, Val Loss: 62.1841, Val Accuracy: 0.00%
+训练完成，model saved at CloudSeaScene/model_saved/CnnClasification_20240807_epoch10.pth

@@ -1,0 +1,1 @@
+{"Epoch": 5, "Total Epoch": 5, "Train Loss": 36.46463548547763, "Val Loss": 0.20375108686103313, "Val Accuracy": 90.56603773584905, "_timestamp": 1723010510.067873, "_runtime": 160.7372589111328, "_step": 4, "_wandb": {"runtime": 158}}

@@ -11,7 +11,6 @@ from dataset import CrackDataset
 from tqdm import tqdm
 from torchvision import transforms
 from torch.optim.lr_scheduler import ReduceLROnPlateau
-
 import wandb # 训练过程可视化
 
 # Device configuration

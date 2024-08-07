@@ -13,11 +13,14 @@ class CNNClasification(nn.Module):
         self.conv2 = nn.Conv2d(16, 32, kernel_size=3, stride=1, padding=1)
         self.fc1 = nn.Linear(32 * 32 * 32, 128)  # 根据输入图像的大小调整
         self.fc2 = nn.Linear(128, 4)  # 4个类别
+        self.relu = nn.ReLU()  # 创建 ReLU 实例
+        #self.softmax = nn.Softmax(dim=1)
 
     def forward(self, x):
-        x = self.pool(nn.ReLU(self.conv1(x)))
-        x = self.pool(nn.ReLU(self.conv2(x)))
+        x = self.pool(self.relu(self.conv1(x)))  # 使用实例化的 ReLU
+        x = self.pool(self.relu(self.conv2(x)))  # 使用实例化的 ReLU
         x = x.view(-1, 32 * 32 * 32)
-        x = nn.ReLU(self.fc1(x))
+        x = self.relu(self.fc1(x))  # 使用实例化的 ReLU
         x = self.fc2(x)
+        #x = self.softmax(x)  # 添加 Softmax 激活函数
         return x

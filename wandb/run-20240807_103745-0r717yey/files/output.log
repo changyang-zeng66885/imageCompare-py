@@ -1,0 +1,111 @@
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/1.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/101.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/103.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/104.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/105.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/135.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/137.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/138.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/14.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/145.jpg
+Epoch [1/10], Train Loss: 1.3664, Val Loss: 7.9261, Val Accuracy: 0.00%
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/1.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/101.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/103.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/104.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/105.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/135.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/137.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/138.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/14.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/145.jpg
+Epoch [2/10], Train Loss: 0.0001, Val Loss: 15.3787, Val Accuracy: 0.00%
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/1.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/101.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/103.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/104.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/105.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/135.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/137.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/138.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/14.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/145.jpg
+Epoch [3/10], Train Loss: 0.0000, Val Loss: 22.1790, Val Accuracy: 0.00%
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/1.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/101.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/103.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/104.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/105.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/135.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/137.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/138.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/14.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/145.jpg
+Epoch [4/10], Train Loss: 0.0000, Val Loss: 28.3301, Val Accuracy: 0.00%
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/1.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/101.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/103.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/104.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/105.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/135.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/137.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/138.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/14.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/145.jpg
+Epoch [5/10], Train Loss: 0.0000, Val Loss: 33.8196, Val Accuracy: 0.00%
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/1.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/101.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/103.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/104.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/105.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/135.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/137.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/138.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/14.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/145.jpg
+Epoch [6/10], Train Loss: 0.0000, Val Loss: 38.6636, Val Accuracy: 0.00%
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/1.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/101.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/103.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/104.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/105.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/135.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/137.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/138.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/14.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/145.jpg
+Epoch [7/10], Train Loss: 0.0000, Val Loss: 42.8997, Val Accuracy: 0.00%
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/1.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/101.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/103.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/104.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/105.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/135.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/137.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/138.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/14.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/145.jpg
+Epoch [8/10], Train Loss: 0.0000, Val Loss: 46.5772, Val Accuracy: 0.00%
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/1.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/101.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/103.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/104.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/105.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/135.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/137.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/138.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/14.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/145.jpg
+Epoch [9/10], Train Loss: 0.0000, Val Loss: 49.7494, Val Accuracy: 0.00%
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/1.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/101.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/103.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/104.jpg
+(dataset init) lable:0,image:CloudSeaScene/images/cloudsea/105.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/135.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/137.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/138.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/14.jpg
+(dataset init) lable:3,image:CloudSeaScene/images/sunrise/145.jpg
+Epoch [10/10], Train Loss: 0.0000, Val Loss: 52.4708, Val Accuracy: 0.00%
+训练完成，model saved at CloudSeaScene/model_saved/CnnClasification_20240807_epoch10.pth

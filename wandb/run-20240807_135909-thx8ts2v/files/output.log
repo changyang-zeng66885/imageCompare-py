@@ -1,0 +1,7 @@
+
+Epoch [1/5], Train Loss: 245.8476, Val Loss: 0.8182, Val Accuracy: 63.21%
+Epoch [2/5], Train Loss: 180.1646, Val Loss: 0.5286, Val Accuracy: 77.36%
+Epoch [3/5], Train Loss: 121.5706, Val Loss: 0.3191, Val Accuracy: 85.85%
+Epoch [4/5], Train Loss: 70.5571, Val Loss: 0.4392, Val Accuracy: 83.02%
+Epoch [5/5], Train Loss: 36.4646, Val Loss: 0.2038, Val Accuracy: 90.57%
+训练完成，model saved at CloudSeaScene/model_saved/CnnClasification_20240807_epoch5.pth
