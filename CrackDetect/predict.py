@@ -20,9 +20,8 @@ def tensor4DToImage(tensorImage,savePath):
     pil_image.save(savePath)
     print(f"Result saved at `{savePath}`")
 
-imagePath = "CrackDetect/imageSrc/images/crack-o-252.jpg"
-savePath = "CrackDetect/imageSrc/predictResults/result-252.png"
-modelPath = "CrackDetect/model_saved/best_model_epoch_10.pth"
+imagePath = "imageCompare-py/images/bailushuyuan/20240412103152_cropped.jpg"
+savePath = "imageCompare-py/CrackDetect/imageSrc/predictResults/result_20240412103152_cropped.jpg"
 
 
 # 1. 创建模型
@@ -31,7 +30,7 @@ print("device:",device)
 model = UNet(in_channels=3, out_channels=1).to(device)
 
 # 2. 加载保存的模型参数
-model.load_state_dict(torch.load(modelPath))
+model.load_state_dict(torch.load('imageCompare-py/CrackDetect/model_saved/best_model_epoch5.pth'))
 
 # 3. 设置模型为评估模式
 model.eval()

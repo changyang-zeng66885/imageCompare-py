@@ -41,5 +41,5 @@ for filename in os.listdir(label_dir):
 
         # 保存结果图像
         output_path = output_dir +"/"+os.path.splitext(filename)[0] + '.jpg'
-        cv2.imwrite(output_path, canvas)
+        cv2.imwrite(output_path, cv2.cvtColor(canvas, cv2.COLOR_BGR2GRAY))
         print(f'Saved {output_path}')
