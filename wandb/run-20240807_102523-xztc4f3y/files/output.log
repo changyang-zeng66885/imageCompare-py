@@ -1,2 +1,0 @@
-Epoch [1/1], Train Loss: 4.0466, Val Loss: 4.0466, Val Accuracy: 0.00%
-训练完成，model saved at CloudSeaScene/model_saved/CnnClasification_20240807_epoch1.pth
