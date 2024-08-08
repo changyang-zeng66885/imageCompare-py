@@ -17,10 +17,10 @@ import wandb # 训练过程可视化
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print("device:",device)
 
-num_epochs = 10
-batch_size = 4
-learning_rate = 0.01
-debug = False # 在 debug 模式下，只会加载前10条数据（方便调试）
+num_epochs = 1
+batch_size = 8
+learning_rate = 0.005
+debug = True # 在 debug 模式下，只会加载前10条数据（方便调试）
 
 train_dataset = CrackDataset(mode='train', transform=transforms.Compose([
     transforms.Resize((256, 256)),
@@ -31,11 +31,12 @@ val_dataset = CrackDataset(mode='val', transform=transforms.Compose([
     transforms.ToTensor()
 ]), debug=debug)
 
-train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=False)
-val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
+train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True)
 
 # Model, loss function, and optimizer
 model = UNet(in_channels=3, out_channels=1).to(device)
+# model.load_state_dict(torch.load("CrackDetect/model_saved/best_model_epoch_10.pth")) #加载保存的模型参数
 criterion = nn.BCEWithLogitsLoss()
 optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
@@ -96,7 +97,7 @@ for epoch in range(num_epochs):
     print(f'Epoch [{epoch+1}/{num_epochs}], Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}')
     wandb.log({"Train Loss": train_loss, "Val Loss": val_loss})
 
-saveModelPath = f'CrackDetect/model_saved/best_model_epoch_{num_epochs}.pth'
+saveModelPath = f'CrackDetect/model_saved/best_model_imagesrcBig_epoch_{num_epochs}.pth'
 torch.save(model.state_dict(),saveModelPath )
 print('Saved best model at: '+ saveModelPath )
 

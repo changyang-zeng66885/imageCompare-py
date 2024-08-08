@@ -12,14 +12,17 @@ class CrackDataset(Dataset):
         self.random_state = random_state
         self.debug = debug
 
-        self.image_dir = 'CrackDetect/imageSrc/images'
-        self.mask_dir = 'CrackDetect/imageSrc/masks'
+        # self.image_dir = 'CrackDetect/imageSrc/images'
+        # self.mask_dir = 'CrackDetect/imageSrc/masks'
+
+        self.image_dir = 'CrackDetect/imageSrcBig/train/images'
+        self.mask_dir = 'CrackDetect/imageSrcBig/train/masks'
 
         self.all_image_files = sorted([f for f in os.listdir(self.image_dir) if f.endswith('.jpg')])
-        self.all_mask_files = sorted([f for f in os.listdir(self.mask_dir) if f.endswith('.png')])
+        self.all_mask_files = sorted([f for f in os.listdir(self.mask_dir) if f.endswith('.jpg')])
 
         if len(self.all_image_files) != len(self.all_mask_files):
-            raise ValueError("Number of images and masks must be equal.")
+            raise ValueError(f"Number of images({len(self.all_image_files)}) and masks({len(self.all_mask_files)}) must be equal.")
 
         # Split the data into train and test sets
         self.train_image_files, self.test_image_files, self.train_mask_files, self.test_mask_files = train_test_split(
