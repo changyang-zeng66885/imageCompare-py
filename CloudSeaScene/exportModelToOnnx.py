@@ -11,4 +11,4 @@ model.eval()
 dummy_input = torch.randn(1, 3, 128, 128).to(device)
 
 
-torch.onnx.export(model, dummy_input, "CloudSeaScene/model_saved/CnnClasification_20240807_epoch5_acc09057.onix")
+torch.onnx.export(model, dummy_input, "CloudSeaScene/model_saved/CnnClasification_20240807_epoch5_acc09057.onnx")

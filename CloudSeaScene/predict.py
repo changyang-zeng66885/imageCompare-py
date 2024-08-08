@@ -17,9 +17,8 @@ def predict(image_path, model_path):
         transforms.Resize((128, 128)),
         transforms.ToTensor(),
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
-    ])
-
-    
+    ]) # Note。transform 操作会自动将pixel 值从 0-255 转换到 0-1
+    # 这里transforms.Normalize 是将0-1 转换到-1到1 之间
 
     # 读取并处理图像
     image = Image.open(image_path).convert("RGB")
