@@ -20,7 +20,6 @@ def predict(image_path, model_path):
     ])
 
     
-
     # 读取并处理图像
     image = Image.open(image_path).convert("RGB")
     image = transform(image).unsqueeze(0)  # 添加 batch 维度
@@ -31,6 +30,7 @@ def predict(image_path, model_path):
     # 进行预测
     with torch.no_grad():
         outputs = model(image)
+        print(f"outputs:{outputs}")
         _, predicted = torch.max(outputs, 1)
 
     return predicted.item()  # 返回预测的类别
@@ -49,4 +49,4 @@ if __name__ == "__main__":
     root_dir = 'CloudSeaScene/images' # 图片路径
     labelDict = grabCategoryNameDict(root_dir) 
     predictResult = predict(image_path, model_path)
-    print(f'Predicte class: {labelDict[predictResult]}')
+    print(f'Predict class: {labelDict[predictResult]}')

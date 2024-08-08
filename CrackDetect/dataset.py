@@ -14,8 +14,6 @@ class CrackDataset(Dataset):
 
         self.image_dir = 'CrackDetect/imageSrc/images'
         self.mask_dir = 'CrackDetect/imageSrc/masks'
-        # self.image_dir = 'imageCompare-py/CrackDetect/bailushuyuan/images'
-        # self.mask_dir = 'imageCompare-py/CrackDetect/bailushuyuan/labeled_images'
 
         self.all_image_files = sorted([f for f in os.listdir(self.image_dir) if f.endswith('.jpg')])
         self.all_mask_files = sorted([f for f in os.listdir(self.mask_dir) if f.endswith('.png')])
