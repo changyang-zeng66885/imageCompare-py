@@ -1,7 +1,4 @@
-CrackDetect/bailushuyuan/*
-CrackDetect/bailushuyuan2/*
-CrackDetect/imageSrc/*
-CrackDetect/imageSrcBig/*
+CrackDetect/data
 wandb
 
 # 忽略编译生成的文件
