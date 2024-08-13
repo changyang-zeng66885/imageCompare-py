@@ -15,13 +15,18 @@ def tensor4DToImage(tensorImage,savePath):
     image = tensorImage.squeeze(0).squeeze(0).cpu()
     # 将 tensor 转换为 PIL 图像
     pil_image = Image.fromarray(image.byte().numpy(), mode='L')
+    
 
     # 保存为 PNG 文件
     pil_image.save(savePath)
     print(f"Result saved at `{savePath}`")
 
-imagePath = "imageCompare-py/images/bailushuyuan/20240412103152_cropped.jpg"
-savePath = "imageCompare-py/CrackDetect/imageSrc/predictResults/result_20240412103152_cropped.jpg"
+# imagePath = "CrackDetect/imageSrc/images/crack-o-287.jpg"
+# savePath = "CrackDetect/imageSrc/predictResults/result_287.jpg"
+# modelPath = 'CrackDetect/model_saved/best_model_epoch_10.pth'
+imagePath = "CrackDetect/bailushuyuan/images/20210320150913c2.jpg"
+savePath = "CrackDetect/bailushuyuan/predictResults/20210320150913c2.jpg"
+modelPath = 'CrackDetect/model_saved/best_model_bailushuyuan2_epoch_100.pth'
 
 
 # 1. 创建模型
@@ -30,7 +35,7 @@ print("device:",device)
 model = UNet(in_channels=3, out_channels=1).to(device)
 
 # 2. 加载保存的模型参数
-model.load_state_dict(torch.load('imageCompare-py/CrackDetect/model_saved/best_model_epoch5.pth'))
+model.load_state_dict(torch.load(modelPath))
 
 # 3. 设置模型为评估模式
 model.eval()
@@ -46,5 +51,6 @@ with torch.no_grad():
     image = image.to(device)
     images = image.unsqueeze(0)  # 现在 image 的形状是 (1, 1, 256, 256)(n,dim,rows,cols)
     outputs = model(images)
+    print(f"outputs:{outputs.squeeze(0).squeeze(0).cpu().byte().numpy()}")
     print(outputs.size())
     tensor4DToImage(outputs,savePath)

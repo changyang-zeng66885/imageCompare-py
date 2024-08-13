@@ -1,0 +1,23 @@
+CrackDetect/bailushuyuan/*
+CrackDetect/bailushuyuan2/*
+CrackDetect/imageSrc/*
+CrackDetect/imageSrcBig/*
+wandb
+
+# 忽略编译生成的文件
+*.class
+*.log
+*.tmp
+
+# 忽略IDE或编辑器的配置文件
+.idea/
+.vscode/
+
+# 忽略操作系统生成的文件
+.DS_Store
+Thumbs.db
+
+# 忽略特定的文件夹
+build/
+target/
+temp/
