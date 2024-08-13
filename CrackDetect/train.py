@@ -22,14 +22,20 @@ batch_size = 4
 learning_rate = 0.01
 debug = False # 在 debug 模式下，只会加载前10条数据（方便调试）
 
-train_dataset = CrackDataset(mode='train', transform=transforms.Compose([
-    transforms.Resize((256, 256)),
-    transforms.ToTensor()
-]), debug=debug)
-val_dataset = CrackDataset(mode='val', transform=transforms.Compose([
-    transforms.Resize((256, 256)),
-    transforms.ToTensor()
-]), debug=debug)
+train_dataset = CrackDataset(
+    mode='train',
+    image_dir='CrackDetect/imageSrc/images',
+    mask_dir='CrackDetect/imageSrc/masks',
+    transform=transforms.Compose([transforms.Resize((256, 256)),transforms.ToTensor()]),
+    debug=debug
+)
+val_dataset = CrackDataset(
+    mode='val',
+    image_dir='CrackDetect/imageSrc/images',
+    mask_dir='CrackDetect/imageSrc/masks',
+    transform=transforms.Compose([transforms.Resize((256, 256)),transforms.ToTensor()]),
+    debug=debug
+)
 
 train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=False)
 val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
@@ -44,7 +50,7 @@ scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=2, thr
 
 wandb.init(
     # set the wandb project where this run will be logged
-    project="CrackDetectByUnet-demo-Bailushuyuan",
+    project="CrackDetectByUnet-demo",
     # track hyperparameters and run metadata
     config={
     "learning_rate": learning_rate,

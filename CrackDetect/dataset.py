@@ -5,17 +5,19 @@ from sklearn.model_selection import train_test_split
 
 # 自定义数据集类
 class CrackDataset(Dataset):
-    def __init__(self, mode, transform=None, test_size=0.2, random_state=42,debug=False):
+    def __init__(self, mode,image_dir, mask_dir,transform=None, test_size=0.2, random_state=42,debug=False):
         self.mode = mode
         self.transform = transform
         self.test_size = test_size
         self.random_state = random_state
         self.debug = debug
 
-        self.image_dir = 'CrackDetect/imageSrc/images'
-        self.mask_dir = 'CrackDetect/imageSrc/masks'
+        # self.image_dir = 'CrackDetect/imageSrc/images'
+        # self.mask_dir = 'CrackDetect/imageSrc/masks'
         # self.image_dir = 'imageCompare-py/CrackDetect/bailushuyuan/images'
         # self.mask_dir = 'imageCompare-py/CrackDetect/bailushuyuan/labeled_images'
+        self.image_dir = image_dir
+        self.mask_dir = mask_dir
 
         self.all_image_files = sorted([f for f in os.listdir(self.image_dir) if f.endswith('.jpg')])
         self.all_mask_files = sorted([f for f in os.listdir(self.mask_dir) if f.endswith('.png')])

@@ -4,9 +4,9 @@ import cv2
 import numpy as np
 
 # 设置输入输出目录
-input_dir = 'bailushuyuan/images'
-output_dir = 'bailushuyuan/labels'
-label_dir = "bailushuyuan/json"
+input_dir = 'data/bailushuyuan/images'
+output_dir = 'data/bailushuyuan/labels'
+label_dir = "data/bailushuyuan/json"
 
 # 遍历所有 .json 文件
 for filename in os.listdir(label_dir):
@@ -39,7 +39,7 @@ for filename in os.listdir(label_dir):
                 print(f"canvas.shape:{canvas.shape}")
 
                 # 在画布上绘制多边形
-                cv2.fillPoly(canvas, points, (127, 127, 127))
+                cv2.fillPoly(canvas, points, (255, 255, 255))
 
         # 将画布与原图像进行叠加
 
